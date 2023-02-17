@@ -7,6 +7,14 @@ export const HeaderContainer = styled.header`
   flex-direction: column;
   align-items: center;
 
+  h1 {
+    color: #222;
+
+    span {
+      color: ${props => props.theme.colors.primary.main}
+    }
+  }
+
 `
 export const InputSearchContainer = styled.div`
   margin-top: 48px;
