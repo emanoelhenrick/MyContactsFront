@@ -35,7 +35,7 @@
         ],
         "semi": [
             "error",
-            "always"
+            "never"
         ],
         "react/react-in-jsx-scope": "off"
     }
