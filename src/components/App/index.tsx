@@ -3,19 +3,22 @@ import { ThemeProvider } from "styled-components"
 import _defaultTheme from "../../assets/styles/themes/default"
 import { Container } from "./styles"
 import { Header } from "../Header"
-import { ContactsList } from "../ContactsList"
+import { Routes } from "../../routes"
+import { BrowserRouter } from "react-router-dom"
 
 export function App() {
 
   return (
-    <ThemeProvider theme={_defaultTheme}>
-      <Container>
-        <Header />
+    <BrowserRouter>
+      <ThemeProvider theme={_defaultTheme}>
+        <Container>
+          <Header />
 
-        <ContactsList />
-      </Container>
+          <Routes />
+        </Container>
 
-      <GlobalStyles/>
-    </ThemeProvider>
+        <GlobalStyles/>
+      </ThemeProvider>
+    </BrowserRouter>
   )
 }
