@@ -1,10 +1,15 @@
 import { ArrowDown, PencilSimpleLine, TrashSimple } from "phosphor-react"
 import { NavLink } from "react-router-dom"
+import { Modal } from "../../components/Modal"
 import { Card, ContactsContainer, Header, InputSearchContainer, ListContainer } from "./styles"
 
 export function Home() {
   return (
     <ContactsContainer>
+
+      <Modal />
+
+
       <InputSearchContainer>
         <input type="text" placeholder="Pesquisar contato"/>
       </InputSearchContainer>
