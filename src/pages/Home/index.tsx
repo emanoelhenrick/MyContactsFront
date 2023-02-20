@@ -1,4 +1,5 @@
 import { ArrowDown, PencilSimpleLine, TrashSimple } from "phosphor-react"
+import { NavLink } from "react-router-dom"
 import { Card, ContactsContainer, Header, InputSearchContainer, ListContainer } from "./styles"
 
 export function Home() {
@@ -9,7 +10,7 @@ export function Home() {
       </InputSearchContainer>
       <Header>
         <strong>3 contatos</strong>
-        <a href="">Novo contato</a>
+        <NavLink to="/new">Novo contato</NavLink>
       </Header>
 
       <ListContainer>

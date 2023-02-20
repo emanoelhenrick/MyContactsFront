@@ -3,7 +3,7 @@ import { ThemeProvider } from "styled-components"
 import _defaultTheme from "../../assets/styles/themes/default"
 import { Container } from "./styles"
 import { Header } from "../Header"
-import { Routes } from "../../routes"
+import { Router } from "../../routes"
 import { BrowserRouter } from "react-router-dom"
 
 export function App() {
@@ -14,7 +14,7 @@ export function App() {
         <Container>
           <Header />
 
-          <Routes />
+          <Router />
         </Container>
 
         <GlobalStyles/>
