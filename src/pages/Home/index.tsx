@@ -7,7 +7,7 @@ export function Home() {
   return (
     <ContactsContainer>
 
-      <Modal />
+      <Modal danger />
 
 
       <InputSearchContainer>
