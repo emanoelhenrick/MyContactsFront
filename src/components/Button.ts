@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components"
 
-export default styled.button`
+interface PropsDanger {
+  danger: boolean
+}
+
+export default styled.button<PropsDanger>`
   height: 52px;
   border: none;
   padding: 0 16px;

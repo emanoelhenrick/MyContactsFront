@@ -1,8 +1,10 @@
 import Button from "../Button"
 import { Container, Footer, Overlay } from "./styles"
+import ReactDOM from "react-dom"
 
 export function Modal({ danger = false }: { danger: boolean }) {
-  return (
+
+  return ReactDOM.createPortal(
     <Overlay>
       <Container danger={danger}>
         <h1>Ttulo</h1>
@@ -15,6 +17,8 @@ export function Modal({ danger = false }: { danger: boolean }) {
           <Button type="button" danger={danger}>Deletar</Button>
         </Footer>
       </Container>
-    </Overlay>
+    </Overlay>,
+    document.getElementById("modal-root")!
   )
+
 }

@@ -13,7 +13,11 @@ export const Overlay = styled.div`
   justify-content: center;
 `
 
-export const Container = styled.div`
+interface PropsDanger {
+  danger: boolean
+}
+
+export const Container = styled.div<PropsDanger>`
   background: #fff;
   border-radius: 4px;
   padding: 24px;
