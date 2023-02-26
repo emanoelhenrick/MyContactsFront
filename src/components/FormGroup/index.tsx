@@ -1,12 +1,16 @@
 import { ReactNode } from "react"
 import { Container } from "./styles"
 
-type FormProps = { children: ReactNode }
+interface FormProps {
+  children: ReactNode
+  error?: string
+}
 
-export function FormGroup({ children }: FormProps) {
+export function FormGroup({ children, error = undefined }: FormProps) {
   return (
     <Container>
       { children }
+      { error && <small>{error}</small>}
     </Container>
   )
 }

@@ -9,8 +9,7 @@ export function Home() {
     <ContactsContainer>
 
       {/* <Modal danger /> */}
-
-      <Loader />
+      {/* <Loader /> */}
 
       <InputSearchContainer>
         <input type="text" placeholder="Pesquisar contato"/>
