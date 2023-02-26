@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
 interface PropsDanger {
-  danger: boolean
+  danger?: boolean
 }
 
 export default styled.button<PropsDanger>`
