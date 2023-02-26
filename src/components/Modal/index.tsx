@@ -20,5 +20,4 @@ export function Modal({ danger = false }: { danger: boolean }) {
     </Overlay>,
     document.getElementById("modal-root")!
   )
-
 }
