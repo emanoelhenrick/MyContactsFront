@@ -6,6 +6,7 @@ export const Container = styled.header`
     text-decoration: none;
     display: flex;
     align-items: center;
+    width: 80px;
     color: ${props => props.theme.colors.primary.main};
     span {
       font-weight: bold;
