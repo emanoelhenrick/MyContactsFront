@@ -1,9 +1,15 @@
 import { useState } from "react"
+import isEmailValid from "../../utils/isEmailValid"
 import Button from "../Button"
 import { FormGroup } from "../FormGroup"
 import Input from "../Input"
 import Select from "../Select"
 import { Form } from "./styles"
+
+interface ErrorsProps {
+  field: string
+  message: string
+}
 
 export function ContactForm({ buttonLabel }: any) {
 
@@ -11,23 +17,44 @@ export function ContactForm({ buttonLabel }: any) {
   const [ emailValue, setEmailValue ] = useState("")
   const [ phoneValue, setPhoneValue ] = useState("")
   const [ categoryValue, setCategoryValue ] = useState("")
-  const [errors, setErrors] = useState([] as any)
+  const [errors, setErrors] = useState<ErrorsProps[]>([])
 
   function handleNameChange(event: any) {
     setNameValue(event.target.value)
 
     if (!event.target.value) {
-      setErrors((prevState: []) => [
+      setErrors((prevState: ErrorsProps[]) => [
         ...prevState,
         { field: "name", message: "Nome é obrigatório."}
       ])
     } else {
-      setErrors((prevState: []) => prevState.filter(
+      setErrors((prevState: ErrorsProps[]) => prevState.filter(
         (error: {field: string}) => error.field !== "name"
       ))
     }
   }
 
+  function handleEmailChange(event: any) {
+    setEmailValue(event.target.value)
+
+    if (event.target.value && !isEmailValid(event.target.value)) {
+      const errorAlreadyExists = errors.find(error => error.field === "email")
+
+      if(errorAlreadyExists){
+        return
+      }
+
+      setErrors((prevState: ErrorsProps[]) => [
+        ...prevState,
+        { field: "email", message: "Digite um E-mail válido."}
+      ])
+
+    } else {
+      setErrors((prevState: ErrorsProps[]) => prevState.filter(
+        (error: {field: string}) => error.field !== "email"
+      ))
+    }
+  }
 
   function handleSubmit(event: any) {
     event.preventDefault()
@@ -50,14 +77,11 @@ export function ContactForm({ buttonLabel }: any) {
         />
       </FormGroup>
 
-      <FormGroup
-        error="O formato do e-mail é inválido"
-      >
+      <FormGroup>
         <Input
           placeholder="E-mail"
-          error
           value={emailValue}
-          onChange={event => setEmailValue(event.target.value)}
+          onChange={handleEmailChange}
         />
       </FormGroup>
 
