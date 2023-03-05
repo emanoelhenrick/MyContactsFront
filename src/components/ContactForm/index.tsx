@@ -5,62 +5,38 @@ import { FormGroup } from "../FormGroup"
 import Input from "../Input"
 import Select from "../Select"
 import { Form } from "./styles"
+import { useErrors } from "../../hooks/useErrors"
 
-interface ErrorsProps {
-  field: string
-  message: string
-}
-
-export function ContactForm({ buttonLabel }: any) {
+export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
 
   const [ nameValue, setNameValue ] = useState("")
   const [ emailValue, setEmailValue ] = useState("")
   const [ phoneValue, setPhoneValue ] = useState("")
   const [ categoryValue, setCategoryValue ] = useState("")
-  const [errors, setErrors] = useState<ErrorsProps[]>([])
 
-  function handleNameChange(event: any) {
+  const { setError, removeError, getErrorMessageByFieldName } = useErrors()
+
+  function handleNameChange(event: {target: { value: string }}) {
     setNameValue(event.target.value)
 
     if (!event.target.value) {
-      setErrors((prevState: ErrorsProps[]) => [
-        ...prevState,
-        { field: "name", message: "Nome é obrigatório."}
-      ])
+      setError({field: "name", message: "Nome é obrigatório."})
     } else {
-      setErrors((prevState: ErrorsProps[]) => prevState.filter(
-        (error: {field: string}) => error.field !== "name"
-      ))
+      removeError("name")
     }
   }
 
-  function handleEmailChange(event: any) {
+  function handleEmailChange(event: {target: { value: string }}) {
     setEmailValue(event.target.value)
 
     if (event.target.value && !isEmailValid(event.target.value)) {
-      const errorAlreadyExists = errors.find(error => error.field === "email")
-
-      if(errorAlreadyExists){
-        return
-      }
-
-      setErrors((prevState: ErrorsProps[]) => [
-        ...prevState,
-        { field: "email", message: "Digite um E-mail válido."}
-      ])
-
+      setError({field: "email", message: "Digite um E-mail válido.."})
     } else {
-      setErrors((prevState: ErrorsProps[]) => prevState.filter(
-        (error: {field: string}) => error.field !== "email"
-      ))
+      removeError("email")
     }
   }
 
-  function getErrorMessageByFieldName(fieldName: string) {
-    return errors.find(error => error.field === fieldName)?.message
-  }
-
-  function handleSubmit(event: any) {
+  function handleSubmit(event: {preventDefault: () => void}) {
     event.preventDefault()
 
     console.log({
