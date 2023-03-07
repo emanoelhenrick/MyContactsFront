@@ -43,7 +43,7 @@ export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
     console.log({
       name: nameValue,
       email: emailValue,
-      phone: phoneValue,
+      phone: phoneValue.replace(/\D/g, ""),
       category: categoryValue,
     })
   }
@@ -80,6 +80,7 @@ export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
           placeholder="Telefone"
           value={phoneValue}
           onChange={handlePhoneChange}
+          maxLength="15"
         />
       </FormGroup>
 

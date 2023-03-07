@@ -2,6 +2,7 @@ import styled, { css } from "styled-components"
 
 interface InputProps {
   error?: boolean
+  maxLength?: any
 }
 
 export default styled.input<InputProps>`
