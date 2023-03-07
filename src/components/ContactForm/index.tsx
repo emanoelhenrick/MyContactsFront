@@ -48,7 +48,7 @@ export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} noValidate>
       <FormGroup error={getErrorMessageByFieldName("name")}>
         <Input
           placeholder="Nome"
