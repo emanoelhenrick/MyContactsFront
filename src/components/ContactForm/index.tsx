@@ -6,6 +6,7 @@ import Input from "../Input"
 import Select from "../Select"
 import { Form } from "./styles"
 import { useErrors } from "../../hooks/useErrors"
+import formatPhone from "../../utils/formatPhone"
 
 export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
 
@@ -47,6 +48,12 @@ export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
     })
   }
 
+  function handlePhoneChange(event: {target: { value: string }}) {
+    setPhoneValue(formatPhone(event.target.value))
+
+
+  }
+
   return (
     <Form onSubmit={handleSubmit} noValidate>
       <FormGroup error={getErrorMessageByFieldName("name")}>
@@ -70,10 +77,9 @@ export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
 
       <FormGroup>
         <Input
-          type="number"
           placeholder="Telefone"
           value={phoneValue}
-          onChange={event => setPhoneValue(event.target.value)}
+          onChange={handlePhoneChange}
         />
       </FormGroup>
 
