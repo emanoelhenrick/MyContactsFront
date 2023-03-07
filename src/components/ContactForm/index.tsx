@@ -60,6 +60,7 @@ export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
 
       <FormGroup error={getErrorMessageByFieldName("email")}>
         <Input
+          type="email"
           error={getErrorMessageByFieldName("email") ? true : false}
           placeholder="E-mail"
           value={emailValue}
@@ -69,6 +70,7 @@ export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
 
       <FormGroup>
         <Input
+          type="number"
           placeholder="Telefone"
           value={phoneValue}
           onChange={event => setPhoneValue(event.target.value)}
